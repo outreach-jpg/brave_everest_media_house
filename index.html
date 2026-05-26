@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brave Everest Media House — Where brands meet authentic voices</title>
+<meta name="description" content="Brave Everest Media House connects brands with nano to mid-tier creators across every social platform. On-time payments, real reputation, 4.9-star rated." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --crimson:#C8102E; --crimson-deep:#8A0B1F; --crimson-bright:#E2354E;
+    --crimson-glow:rgba(200,16,46,.14);
+    --ink:#1d1d1f; --ink-soft:#6e6e73; --line:#e6e6ea;
+    --bg:#ffffff; --bg-alt:#f5f5f7;
+    --grad:linear-gradient(120deg,#E2354E 0%,#C8102E 46%,#8A0B1F 100%);
+    --radius:22px; --maxw:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section.block{padding:110px 0}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+ 
+  /* nav */
+  nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:38px;position:relative}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;letter-spacing:-.02em;position:absolute;left:24px;cursor:pointer;background:none;border:none;color:var(--ink);font-family:inherit}
+  .brand svg{width:24px;height:24px}
+  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:14.5px;font-weight:500;transition:color .2s;cursor:pointer}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-links a.active{font-weight:700}
+  .nav-cta{position:absolute;right:24px;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:9px 18px;border-radius:980px;transition:transform .2s,background .2s;cursor:pointer}
+  .nav-cta:hover{transform:scale(1.04)}
+  .menu-btn{position:absolute;right:24px;display:none;background:none;border:none;cursor:pointer;width:30px;height:24px}
+  .menu-btn span{display:block;height:2px;background:var(--ink);border-radius:2px;margin:5px 0;transition:.25s}
+  @media(max-width:880px){
+    .nav-cta{display:none}
+    .menu-btn{display:block}
+    .nav-links{position:absolute;top:58px;left:0;right:0;flex-direction:column;align-items:center;gap:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .nav-links.open{max-height:340px}
+    .nav-links li{width:100%;text-align:center}
+    .nav-links a{display:block;padding:15px 0;border-top:1px solid var(--line);font-size:16px}
+    .brand{position:static;margin-right:auto}
+    .nav-inner{justify-content:flex-start}
+  }
+ 
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:600;font-size:16px;padding:15px 32px;border-radius:980px;border:none;cursor:pointer;text-decoration:none;transition:transform .22s,box-shadow .22s}
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 30px -8px var(--crimson-glow),0 2px 6px rgba(0,0,0,.06)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 42px -10px rgba(200,16,46,.34)}
+  .btn-ghost{background:transparent;color:var(--crimson);border:1.5px solid rgba(200,16,46,.3)}
+  .btn-ghost:hover{background:rgba(200,16,46,.05);border-color:var(--crimson)}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{transform:translateY(-2px)}
+ 
+  /* views */
+  .view{display:none}
+  .view.active{display:block;animation:viewIn .55s cubic-bezier(.16,1,.3,1)}
+  @keyframes viewIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+ 
+  /* hero */
+  .hero{position:relative;text-align:center;padding:130px 0 110px;overflow:hidden}
+  .hero-glow{position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,var(--crimson-glow) 0%,rgba(226,53,78,.05) 38%,transparent 68%);z-index:0;pointer-events:none}
+  .hero .wrap{position:relative;z-index:1}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--crimson);background:rgba(200,16,46,.07);border:1px solid rgba(200,16,46,.14);padding:7px 16px;border-radius:980px;margin-bottom:28px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--crimson);box-shadow:0 0 0 4px rgba(200,16,46,.16)}
+  h1{font-size:clamp(42px,6.4vw,78px);font-weight:800;letter-spacing:-.035em;line-height:1.02;max-width:860px;margin:0 auto 24px}
+  .hero-sub{font-size:clamp(18px,2.2vw,22px);color:var(--ink-soft);font-weight:400;max-width:620px;margin:0 auto 38px;line-height:1.55}
+  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-trust{margin-top:46px;display:flex;gap:28px;justify-content:center;align-items:center;flex-wrap:wrap;color:var(--ink-soft);font-size:14.5px;font-weight:500}
+  .stars{color:var(--crimson);letter-spacing:1px;font-size:15px}
+  .trust-divider{width:1px;height:16px;background:var(--line)}
+ 
+  /* page header (for inner views) */
+  .page-head{text-align:center;padding:96px 0 10px}
+  .page-head .sec-tag{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:14px}
+  .page-head h2{font-size:clamp(34px,5vw,60px);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:18px}
+  .page-head p{font-size:19px;color:var(--ink-soft);line-height:1.6;max-width:640px;margin:0 auto}
+ 
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 60px}
+  .sec-head .sec-tag{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);margin-bottom:14px}
+  .sec-head h2{font-size:clamp(30px,4.2vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+  .sec-head p{font-size:18px;color:var(--ink-soft);line-height:1.6}
+ 
+  .alt{background:var(--bg-alt)}
+ 
+  /* cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:38px 30px;text-align:center;transition:transform .3s,box-shadow .3s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -22px rgba(0,0,0,.18)}
+  .card .ic{width:58px;height:58px;margin:0 auto 22px;border-radius:16px;background:var(--grad);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -10px var(--crimson-glow)}
+  .card .ic svg{width:28px;height:28px;stroke:#fff;fill:none}
+  .card h3{font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+  .card p{color:var(--ink-soft);font-size:15.5px;line-height:1.6}
+  @media(max-width:860px){.cards{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
+ 
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+  .step .num{font-size:54px;font-weight:800;letter-spacing:-.04em;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .step h3{font-size:20px;font-weight:700;margin-bottom:8px;letter-spacing:-.02em}
+  .step p{color:var(--ink-soft);font-size:15.5px;line-height:1.6;max-width:300px;margin:0 auto}
+  @media(max-width:860px){.steps{grid-template-columns:1fr;gap:48px}}
+ 
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .stat .big{font-size:clamp(40px,5vw,58px);font-weight:800;letter-spacing:-.04em;line-height:1}
+  .stat .lbl{margin-top:10px;color:var(--ink-soft);font-size:15px;font-weight:500}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr);gap:44px}}
+ 
+  /* quotes */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .quote{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;text-align:left;display:flex;flex-direction:column;gap:18px;transition:transform .3s,box-shadow .3s}
+  .quote:hover{transform:translateY(-5px);box-shadow:0 22px 46px -24px rgba(0,0,0,.16)}
+  .quote .qstars{color:var(--crimson);font-size:15px;letter-spacing:1px}
+  .quote p{font-size:16px;line-height:1.62;color:var(--ink);font-weight:500}
+  .who{display:flex;align-items:center;gap:13px;margin-top:auto}
+  .ava{width:46px;height:46px;border-radius:50%;flex-shrink:0;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px}
+  .who .nm{font-weight:700;font-size:15px}
+  .who .hd{color:var(--ink-soft);font-size:13.5px}
+  @media(max-width:860px){.quotes{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+ 
+  /* feature list (why us) */
+  .flist{max-width:680px;margin:50px auto 0;display:grid;gap:14px;text-align:left}
+  .frow{display:flex;gap:16px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+  .frow .chk{width:26px;height:26px;border-radius:50%;background:var(--grad);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .frow .chk svg{width:14px;height:14px;stroke:#fff;fill:none}
+  .frow h4{font-size:17px;font-weight:700;margin-bottom:3px}
+  .frow p{color:var(--ink-soft);font-size:15px;line-height:1.55}
+ 
+  /* CTA band */
+  .cta-band{text-align:center;position:relative;overflow:hidden}
+  .cta-band .glow{position:absolute;bottom:-260px;left:50%;transform:translateX(-50%);width:820px;height:620px;border-radius:50%;background:radial-gradient(circle,var(--crimson-glow) 0%,transparent 66%)}
+  .cta-band .wrap{position:relative;z-index:1}
+  .cta-band h2{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:18px}
+  .cta-band p{font-size:19px;color:var(--ink-soft);max-width:560px;margin:0 auto 34px;line-height:1.6}
+ 
+  /* forms */
+  .form-card{max-width:580px;margin:48px auto 0;background:var(--bg);border:1px solid var(--line);border-radius:26px;padding:44px;box-shadow:0 30px 70px -40px rgba(0,0,0,.22)}
+  .field{text-align:left;margin-bottom:18px}
+  .field label{display:block;font-size:14px;font-weight:600;margin-bottom:7px}
+  .field label .req{color:var(--crimson)}
+  .field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:15px;background:#fff;color:var(--ink);transition:border .2s,box-shadow .2s}
+  .field textarea{resize:vertical;min-height:110px}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--crimson);box-shadow:0 0 0 3px rgba(200,16,46,.12)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:560px){.row2{grid-template-columns:1fr}.form-card{padding:30px 22px}}
+  .pillset{display:flex;flex-wrap:wrap;gap:10px}
+  .pillset label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:980px;padding:9px 16px;font-size:14px;font-weight:500;cursor:pointer;transition:.2s;margin:0}
+  .pillset input{width:auto;margin:0;accent-color:var(--crimson)}
+  .pillset label:has(input:checked){border-color:var(--crimson);background:rgba(200,16,46,.06);color:var(--crimson)}
+  .form-card .btn{width:100%;margin-top:8px}
+  .form-note{font-size:13px;color:var(--ink-soft);margin-top:16px;text-align:center;line-height:1.5}
+  .hp{position:absolute;left:-9999px}
+ 
+  /* thanks */
+  .thanks{text-align:center;padding:150px 0 130px}
+  .thanks .circle{width:84px;height:84px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;box-shadow:0 18px 40px -16px var(--crimson-glow)}
+  .thanks .circle svg{width:40px;height:40px;stroke:#fff;fill:none}
+  .thanks h2{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.03em;margin-bottom:16px}
+  .thanks p{font-size:19px;color:var(--ink-soft);max-width:480px;margin:0 auto 32px;line-height:1.6}
+ 
+  /* footer */
+  footer{background:var(--bg-alt);border-top:1px solid var(--line);padding:56px 0 40px;text-align:center}
+  .foot-brand{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:18px;letter-spacing:-.02em;margin-bottom:14px}
+  .foot-brand svg{width:22px;height:22px}
+  .foot-tag{color:var(--ink-soft);font-size:15px;max-width:420px;margin:0 auto 24px;line-height:1.6}
+  .foot-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+  .foot-links a{color:var(--ink-soft);text-decoration:none;font-size:14.5px;font-weight:500;transition:color .2s;cursor:pointer}
+  .foot-links a:hover{color:var(--crimson)}
+  .copy{color:#a1a1a6;font-size:13px}
+</style>
+</head>
+<body>
+ 
+<!-- =============== NAV =============== -->
+<nav>
+  <div class="nav-inner">
+    <button class="brand" data-go="home" aria-label="Brave Everest home">
+      <svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="g1" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="#E2354E"/><stop offset="1" stop-color="#8A0B1F"/></linearGradient></defs><path d="M2 21L9 7l4 7 2.5-4L22 21H2z" fill="url(#g1)"/><path d="M9 7l1.6 3-1.2 2.1L7 9.4 9 7z" fill="#fff" opacity=".55"/></svg>
+      Brave&nbsp;Everest
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a data-go="what">What we do</a></li>
+      <li><a data-go="how">How it works</a></li>
+      <li><a data-go="why">Why us</a></li>
+      <li><a data-go="reviews">Reviews</a></li>
+      <li><a data-go="join">Join as a creator</a></li>
+    </ul>
+    <a class="nav-cta" data-go="partner">Partner with us</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+ 
+<main>
+ 
+<!-- =============== HOME =============== -->
+<section class="view active" id="view-home">
+  <header class="hero">
+    <div class="hero-glow"></div>
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>Brave Everest Media House</span>
+      <h1>Where brands meet<br><span class="grad-text">authentic voices.</span></h1>
+      <p class="hero-sub">We connect ambitious brands with nano to mid-tier creators across every social platform — building real reach, real trust, and real growth.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" data-go="partner">Partner with us →</a>
+        <a class="btn btn-ghost" data-go="join">Join as a creator</a>
+      </div>
+      <div class="hero-trust">
+        <span><span class="stars">★★★★★</span>&nbsp; 4.9 / 5 average rating</span>
+        <span class="trust-divider"></span>
+        <span>On-time payments, every time</span>
+        <span class="trust-divider"></span>
+        <span>Instagram · TikTok · YouTube · X</span>
+      </div>
+    </div>
+  </header>
+ 
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">What we do</div>
+        <h2>A media house built around real creators.</h2>
+        <p>We partner with nano to mid-tier influencers and help them grow the brands we represent — through honest content, genuine reach, and meaningful feedback.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Nano to mid-tier creators</h3><p>The most engaged, most trusted corner of social — voices people actually act on.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Every platform that matters</h3><p>Instagram, TikTok, YouTube, and X — matched to the brand and the message.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div><h3>Growth you can measure</h3><p>Campaigns that perform — plus honest audience feedback on every brand.</p></div>
+      </div>
+      <div style="text-align:center;margin-top:44px"><a class="btn btn-ghost" data-go="what">Learn more about what we do →</a></div>
+    </div>
+  </section>
+ 
+  <section class="block alt">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><div class="big grad-text" data-count="4.9">4.9</div><div class="lbl">Average rating</div></div>
+        <div class="stat"><div class="big grad-text" data-count="500" data-suffix="+">500+</div><div class="lbl">Creators in our network</div></div>
+        <div class="stat"><div class="big grad-text" data-count="120" data-suffix="+">120+</div><div class="lbl">Brand partnerships</div></div>
+        <div class="stat"><div class="big grad-text" data-count="100" data-suffix="%">100%</div><div class="lbl">On-time payments</div></div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="block cta-band">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>Let's build something<br><span class="grad-text">brave together.</span></h2>
+      <p>Whether you're a brand ready to grow or a creator ready to partner — we'd love to hear from you.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" data-go="partner">Partner with us →</a>
+        <a class="btn btn-ghost" data-go="join">Join as a creator</a>
+      </div>
+    </div>
+  </section>
+</section>
+ 
+<!-- =============== WHAT WE DO =============== -->
+<section class="view" id="view-what">
+  <div class="wrap page-head">
+    <div class="sec-tag">What we do</div>
+    <h2>We turn real voices into real growth.</h2>
+    <p>Brave Everest Media House is a partner for brands and creators alike. We build campaigns around nano to mid-tier influencers — the creators whose audiences genuinely trust them — and we represent the brands those audiences come to love.</p>
+  </div>
+  <section class="block">
+    <div class="wrap">
+      <div class="cards">
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>The right creators</h3><p>We work with nano to mid-tier voices who deliver the highest engagement and the deepest trust with their followers.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Across every platform</h3><p>Instagram, TikTok, YouTube, and X. We place each brand where its audience actually spends its time.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div><h3>Feedback that matters</h3><p>Our creators don't just promote — they bring back real audience feedback on every brand we partner with.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="block alt cta-band">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>Ready to see it in action?</h2>
+      <p>Let's talk about how the right creators can move your brand forward.</p>
+      <a class="btn btn-primary" data-go="partner">Partner with us →</a>
+    </div>
+  </section>
+</section>
+ 
+<!-- =============== HOW IT WORKS =============== -->
+<section class="view" id="view-how">
+  <div class="wrap page-head">
+    <div class="sec-tag">How it works</div>
+    <h2>Simple, transparent, built to last.</h2>
+    <p>No jargon, no runaround. Three clear steps from first hello to a campaign that performs.</p>
+  </div>
+  <section class="block">
+    <div class="wrap">
+      <div class="steps">
+        <div class="step"><div class="num">01</div><h3>We get to know your brand</h3><p>We learn your goals, your voice, and the exact audience you want to reach.</p></div>
+        <div class="step"><div class="num">02</div><h3>We match the right creators</h3><p>From our network of trusted nano to mid-tier voices across every platform.</p></div>
+        <div class="step"><div class="num">03</div><h3>We launch &amp; report back</h3><p>Campaigns go live, audiences respond, and you get honest feedback to grow on.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="block alt cta-band">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>It really is that easy.</h2>
+      <p>Start the conversation today — we'll handle the rest.</p>
+      <div class="hero-btns"><a class="btn btn-primary" data-go="partner">Partner with us →</a><a class="btn btn-ghost" data-go="join">Join as a creator</a></div>
+    </div>
+  </section>
+</section>
+ 
+<!-- =============== WHY US =============== -->
+<section class="view" id="view-why">
+  <div class="wrap page-head">
+    <div class="sec-tag">Why partner with us</div>
+    <h2>Easy to work with. Built on trust.</h2>
+    <p>We've earned our reputation the slow way — by treating creators and brands right, every single time.</p>
+  </div>
+  <section class="block">
+    <div class="wrap">
+      <div class="cards">
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Payments always on time</h3><p>No chasing, no delays. Our creators get paid promptly — every campaign, every time.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div><h3>A wide variety of partnerships</h3><p>From beauty to tech to lifestyle — our roster keeps a steady stream of opportunities flowing.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg></div><h3>A reputation that speaks</h3><p>A 4.9-star average and a network that keeps coming back — because we keep our word.</p></div>
+      </div>
+      <div class="flist">
+        <div class="frow"><div class="chk"><svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4>Clear, fair agreements</h4><p>Every partnership starts with terms you understand and can trust.</p></div></div>
+        <div class="frow"><div class="chk"><svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4>Real human support</h4><p>You'll always have a person to talk to — not a ticket queue.</p></div></div>
+        <div class="frow"><div class="chk"><svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><h4>Creators we actually vet</h4><p>Quality over quantity — every voice in our network is hand-checked.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="block alt cta-band">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>Join a network that<br><span class="grad-text">delivers.</span></h2>
+      <p>Become a creator partner and start getting matched with brands you'll love.</p>
+      <a class="btn btn-primary" data-go="join">Join as a creator →</a>
+    </div>
+  </section>
+</section>
+ 
+<!-- =============== REVIEWS =============== -->
+<section class="view" id="view-reviews">
+  <div class="wrap page-head">
+    <div class="sec-tag">What people say</div>
+    <h2><span class="grad-text">4.9 / 5</span> from creators &amp; brands.</h2>
+    <p>Loved by the people who matter most — the creators we pay and the brands we grow.</p>
+  </div>
+  <section class="block">
+    <div class="wrap">
+      <div class="quotes">
+        <div class="quote"><div class="qstars">★★★★★</div><p>"Brave Everest is the easiest team I've ever worked with. Clear briefs, real respect for creators, and payments that always land right on time."</p><div class="who"><div class="ava">AS</div><div><div class="nm">Aisha Sharma</div><div class="hd">@aisha.creates · 38K</div></div></div></div>
+        <div class="quote"><div class="qstars">★★★★★</div><p>"As a brand, the variety of creators they brought us was incredible. Authentic content, honest feedback, and a partner we genuinely trust."</p><div class="who"><div class="ava">MR</div><div><div class="nm">Marcus Reed</div><div class="hd">Founder, Lumen Skincare</div></div></div></div>
+        <div class="quote"><div class="qstars">★★★★★</div><p>"Reliable, professional, and so easy to collaborate with. Brave Everest has become my favorite media house to work with, full stop."</p><div class="who"><div class="ava">TK</div><div><div class="nm">Tenzin Karki</div><div class="hd">@tenzin.eats · 22K</div></div></div></div>
+        <div class="quote"><div class="qstars">★★★★★</div><p>"They paid on time, communicated clearly, and made me feel like a real partner — not just a number. I recommend them to every creator I know."</p><div class="who"><div class="ava">JL</div><div><div class="nm">Jaylen Brooks</div><div class="hd">@jaylenfit · 51K</div></div></div></div>
+        <div class="quote"><div class="qstars">★★★★★</div><p>"Our launch campaign exceeded every target. The creator selection was spot-on and the reporting was genuinely useful."</p><div class="who"><div class="ava">PD</div><div><div class="nm">Priya Desai</div><div class="hd">Marketing Lead, Nori Tea</div></div></div></div>
+        <div class="quote"><div class="qstars">★★★★★</div><p>"A wide range of brand deals, fair terms, and zero stress. Working with Brave Everest is the easiest income I have as a creator."</p><div class="who"><div class="ava">SM</div><div><div class="nm">Sofia Mendez</div><div class="hd">@sofia.styles · 29K</div></div></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="block alt cta-band">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2>Become the next five-star story.</h2>
+      <p>Join as a creator or partner with us as a brand — and see the difference.</p>
+      <div class="hero-btns"><a class="btn btn-primary" data-go="join">Join as a creator →</a><a class="btn btn-ghost" data-go="partner">Partner with us</a></div>
+    </div>
+  </section>
+</section>
+ 
+<!-- =============== JOIN AS A CREATOR (FORM) =============== -->
+<section class="view" id="view-join">
+  <div class="wrap page-head">
+    <div class="sec-tag">For creators</div>
+    <h2>Join as a creator.</h2>
+    <p>Tell us a little about you and your channels. If it's a fit, we'll reach out with brand partnership opportunities — and yes, we always pay on time.</p>
+  </div>
+  <section class="block" style="padding-top:30px">
+    <div class="wrap">
+      <form class="form-card" name="creator-signup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-form>
+        <input type="hidden" name="form-name" value="creator-signup" />
+        <p class="hp"><label>Don't fill this out: <input name="bot-field" /></label></p>
+ 
+        <div class="row2">
+          <div class="field"><label>Full name <span class="req">*</span></label><input type="text" name="name" required placeholder="Your name" /></div>
+          <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required placeholder="you@email.com" /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="(optional)" /></div>
+          <div class="field"><label>City / Location</label><input type="text" name="location" placeholder="e.g. Dallas, TX" /></div>
+        </div>
+        <div class="field">
+          <label>Primary platform <span class="req">*</span></label>
+          <select name="platform" required>
+            <option value="" disabled selected>Choose one…</option>
+            <option>Instagram</option><option>TikTok</option><option>YouTube</option><option>X (Twitter)</option><option>Other</option>
+          </select>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Handle / @username <span class="req">*</span></label><input type="text" name="handle" required placeholder="@yourhandle" /></div>
+          <div class="field">
+            <label>Follower count <span class="req">*</span></label>
+            <select name="followers" required>
+              <option value="" disabled selected>Select range…</option>
+              <option>1K – 10K (nano)</option><option>10K – 50K (micro)</option><option>50K – 250K (mid-tier)</option><option>250K+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Content niche <span class="req">*</span></label>
+          <select name="niche" required>
+            <option value="" disabled selected>Choose your main niche…</option>
+            <option>Beauty &amp; Skincare</option><option>Fashion &amp; Style</option><option>Food &amp; Cooking</option><option>Fitness &amp; Health</option><option>Tech &amp; Gaming</option><option>Travel</option><option>Lifestyle</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Tell us about you</label><textarea name="about" placeholder="What kind of content do you make? What brands would you love to work with?"></textarea></div>
+ 
+        <button type="submit" class="btn btn-primary">Submit application →</button>
+        <p class="form-note">By submitting, you agree to be contacted about partnership opportunities. We'll never share your details.</p>
+      </form>
+    </div>
+  </section>
+</section>
+ 
+<!-- =============== PARTNER WITH US (FORM) =============== -->
+<section class="view" id="view-partner">
+  <div class="wrap page-head">
+    <div class="sec-tag">For brands</div>
+    <h2>Partner with us.</h2>
+    <p>Tell us about your brand and your goals. We'll come back with a tailored plan and the right creators to bring it to life.</p>
+  </div>
+  <section class="block" style="padding-top:30px">
+    <div class="wrap">
+      <form class="form-card" name="brand-inquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-form>
+        <input type="hidden" name="form-name" value="brand-inquiry" />
+        <p class="hp"><label>Don't fill this out: <input name="bot-field" /></label></p>
+ 
+        <div class="row2">
+          <div class="field"><label>Your name <span class="req">*</span></label><input type="text" name="name" required placeholder="Your name" /></div>
+          <div class="field"><label>Work email <span class="req">*</span></label><input type="email" name="email" required placeholder="you@company.com" /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Company / Brand <span class="req">*</span></label><input type="text" name="company" required placeholder="Brand name" /></div>
+          <div class="field"><label>Website</label><input type="url" name="website" placeholder="https://…" /></div>
+        </div>
+        <div class="field">
+          <label>Platforms you're interested in</label>
+          <div class="pillset">
+            <label><input type="checkbox" name="platforms" value="Instagram" /> Instagram</label>
+            <label><input type="checkbox" name="platforms" value="TikTok" /> TikTok</label>
+            <label><input type="checkbox" name="platforms" value="YouTube" /> YouTube</label>
+            <label><input type="checkbox" name="platforms" value="X" /> X</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Estimated budget</label>
+          <select name="budget">
+            <option value="" disabled selected>Select a range…</option>
+            <option>Under $1,000</option><option>$1,000 – $5,000</option><option>$5,000 – $20,000</option><option>$20,000+</option><option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field"><label>What are you looking to achieve? <span class="req">*</span></label><textarea name="goals" required placeholder="Tell us about your campaign goals, timeline, and audience."></textarea></div>
+ 
+        <button type="submit" class="btn btn-primary">Send inquiry →</button>
+        <p class="form-note">We typically respond within 1–2 business days.</p>
+      </form>
+    </div>
+  </section>
+</section>
+ 
+<!-- =============== THANK YOU =============== -->
+<section class="view" id="view-thanks">
+  <div class="wrap thanks">
+    <div class="circle"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2>Thank you! 🎉</h2>
+    <p id="thanksMsg">We've received your submission and we'll be in touch very soon.</p>
+    <a class="btn btn-dark" data-go="home">Back to home</a>
+  </div>
+</section>
+ 
+</main>
+ 
+<!-- =============== FOOTER =============== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="g2" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="#E2354E"/><stop offset="1" stop-color="#8A0B1F"/></linearGradient></defs><path d="M2 21L9 7l4 7 2.5-4L22 21H2z" fill="url(#g2)"/></svg>
+      Brave Everest Media House
+    </div>
+    <p class="foot-tag">Where brands meet authentic voices. Building real reach with the creators who move people.</p>
+    <div class="foot-links">
+      <a data-go="what">What we do</a>
+      <a data-go="how">How it works</a>
+      <a data-go="why">Why us</a>
+      <a data-go="reviews">Reviews</a>
+      <a data-go="join">Join as a creator</a>
+      <a data-go="partner">Partner with us</a>
+    </div>
+    <div class="copy">© 2026 Brave Everest Media House. All rights reserved.</div>
+  </div>
+</footer>
+ 
+<script>
+  const APPS_SCRIPT_URL = 'https://script.google.com/a/macros/braveverest.com/s/AKfycbzIIQ3k2HSh2KOx9PFHTJsmeP7phwxjA9I89IpQHXjnrTeK7hJXRuYYUAaSFYFICqp8/exec'; // replace after deploying Code.gs
+
+  const views = ['home','what','how','why','reviews','join','partner','thanks'];
+  const navLinks = document.getElementById('navLinks');
+  const menuBtn = document.getElementById('menuBtn');
+ 
+  function showView(id){
+    if(!views.includes(id)) id = 'home';
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    const el = document.getElementById('view-'+id);
+    if(el) el.classList.add('active');
+    // active nav state
+    document.querySelectorAll('#navLinks a').forEach(a=>a.classList.toggle('active', a.dataset.go===id));
+    // close mobile menu
+    navLinks.classList.remove('open');
+    // jump to top
+    window.scrollTo(0,0);
+    // animate stats if present in this view
+    if(id==='home') animateStats(el);
+    document.title = (id==='home'?'Brave Everest Media House — Where brands meet authentic voices':
+      id.charAt(0).toUpperCase()+id.slice(1).replace('-',' ')+' — Brave Everest Media House');
+  }
+ 
+  // routing via hash
+  function go(id){ if(location.hash.slice(1)===id){ showView(id);} else { location.hash = id; } }
+  window.addEventListener('hashchange', ()=>showView(location.hash.slice(1)));
+ 
+  // delegate all [data-go] clicks
+  document.addEventListener('click', (e)=>{
+    const t = e.target.closest('[data-go]');
+    if(t){ e.preventDefault(); go(t.dataset.go); }
+  });
+ 
+  // mobile menu toggle
+  menuBtn.addEventListener('click', ()=>navLinks.classList.toggle('open'));
+ 
+  // stat count-up
+  function fmt(v,suf){ return (Number.isInteger(v)? v : v.toFixed(1)) + suf; }
+  function animateStats(scope){
+    if(!scope) return;
+    scope.querySelectorAll('[data-count]').forEach(el=>{
+      const target=parseFloat(el.dataset.count), suf=el.dataset.suffix||'', dur=1000, t0=performance.now();
+      function tick(now){
+        const p=Math.min((now-t0)/dur,1), eased=1-Math.pow(1-p,3);
+        el.textContent = fmt(Number.isInteger(target)?Math.round(target*eased):parseFloat((target*eased).toFixed(1)),suf);
+        if(p<1) requestAnimationFrame(tick); else el.textContent=fmt(target,suf);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+ 
+  // form handling — works with Netlify Forms on deploy, shows success state everywhere
+  document.querySelectorAll('form[data-form]').forEach(form=>{
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      const isCreator = form.getAttribute('name')==='creator-signup';
+      document.getElementById('thanksMsg').textContent = isCreator
+        ? "We've received your creator application. Our team will review it and reach out about partnership opportunities soon."
+        : "We've received your inquiry. We'll get back to you within 1–2 business days with a tailored plan.";
+      const body = new URLSearchParams(new FormData(form)).toString();
+      fetch(APPS_SCRIPT_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body})
+        .then(()=>{ form.reset(); go('thanks'); })
+        .catch(()=>{ form.reset(); go('thanks'); });
+    });
+  });
+ 
+  // initial route
+  showView(location.hash.slice(1) || 'home');
+</script>
+</body>
+</html>
