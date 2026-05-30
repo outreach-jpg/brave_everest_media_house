@@ -563,8 +563,11 @@
         ? "We've received your creator application. Our team will review it and reach out about partnership opportunities soon."
         : "We've received your inquiry. We'll get back to you within 1–2 business days with a tailored plan.";
       const body = new URLSearchParams(new FormData(form)).toString();
-      fetch('/.netlify/functions/submit-form', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body})
-        .then(()=>{ form.reset(); go('thanks'); })
+      fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body})
+        .then(()=>{
+          fetch('/.netlify/functions/submit-form', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body}).catch(()=>{});
+          form.reset(); go('thanks');
+        })
         .catch(()=>{ form.reset(); go('thanks'); });
     });
   });
