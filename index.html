@@ -504,8 +504,6 @@
 </footer>
  
 <script>
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIIQ3k2HSh2KOx9PFHTJsmeP7phwxjA9I89IpQHXjnrTeK7hJXRuYYUAaSFYFICqp8/exec';
-
   const views = ['home','what','how','why','reviews','join','partner','thanks'];
   const navLinks = document.getElementById('navLinks');
   const menuBtn = document.getElementById('menuBtn');
@@ -565,7 +563,7 @@
         ? "We've received your creator application. Our team will review it and reach out about partnership opportunities soon."
         : "We've received your inquiry. We'll get back to you within 1–2 business days with a tailored plan.";
       const body = new URLSearchParams(new FormData(form)).toString();
-      fetch(APPS_SCRIPT_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body})
+      fetch('/.netlify/functions/submit-form', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body})
         .then(()=>{ form.reset(); go('thanks'); })
         .catch(()=>{ form.reset(); go('thanks'); });
     });
